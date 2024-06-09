@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Siamvayupak IOT</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <meta name="description" content="Admin, Dashboard, Bootstrap, Bootstrap 4, Angular, AngularJS" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!-- for ios 7 style, multi-resolution icon of 152x152 -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-barstyle" content="black-translucent">
+  <link rel="apple-touch-icon" href="../assets/images/logo.png">
+  <meta name="apple-mobile-web-app-title" content="Flatkit">
+  <!-- for Chrome on Android, multi-resolution icon of 196x196 -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <!-- <link rel="shortcut icon" sizes="196x196" href="../assets/images/logo.png"> -->
+
+  <!-- style -->
+  <link rel="stylesheet" href="../assets/animate.css/animate.min.css" type="text/css" />
+  <link rel="stylesheet" href="../assets/glyphicons/glyphicons.css" type="text/css" />
+  <link rel="stylesheet" href="../assets/font-awesome/css/font-awesome.min.css" type="text/css" />
+  <link rel="stylesheet" href="../assets/material-design-icons/material-design-icons.css" type="text/css" />
+
+  <link rel="stylesheet" href="../assets/bootstrap/dist/css/bootstrap.min.css" type="text/css" />
+  <!-- build:css ../assets/styles/app.min.css -->
+  <link rel="stylesheet" href="../assets/styles/app.css" type="text/css" />
+  <!-- endbuild -->
+  <link rel="stylesheet" href="../assets/styles/font.css" type="text/css" />
+  <!-- clock -->
+  <link rel="stylesheet" href="../assets/styles/app.css">
+  <script src="scripts/Autorefresh.js"defer></script>
+
+</head>
+
+<body>
+  <p id="original"></p>
+
+  <div id="content"></div>
+
+  <div class="app" id="app">
+
+    <!-- ############ LAYOUT START-->
+
+    <!-- aside -->
+    <div id="aside" class="app-aside box-shadow-z3 modal fade lg nav-expand">
+      <div class="left navside white dk" layout="column">
+        <div class="navbar navbar-md info no-radius box-shadow-z4">
+
+          <a class="navbar-brand">
+            <div ui-include="'../assets/images/logo.white.svg'"></div>
+            <!-- <img src="../assets/images/logo.png" alt="." class="hide"> -->
+            <span class="hidden-folded inline">SVS IOT</span>
+          </a>
+
+        </div>
+
+
+        <div flex class="hide-scroll">
+          <nav class="scroll">
+
+            <ul class="nav" ui-nav>
+              <li class="nav-header hidden-folded">
+                <small class="text-muted">Option</small>
+
+              </li>
+              <li>
+                <a href="Main.html">
+                  <span class="nav-icon">
+                    <i class="material-icons">&#xe3fc;
+                      <span ui-include="'../assets/images/i_0.svg'"></span>
+                    </i>
+                  </span>
+                  <span class="nav-text"> Main</span>
+                </a>
+              </li>
+              <li>
+                <a href="logdata.html">
+                  <span class="nav-icon">
+                    <i class="material-icons">list_alt</i>
+                  </span>
+                  <span class="nav-text">Log Data</span>
+                </a>
+              </li>
+
+
+
+
+              <li>
+                <a href="Map.html">
+                  <span class="nav-icon">
+                    <i class="material-icons">&#xe55b;</i>
+                  </span>
+                  <span class="nav-text">Map</span>
+                </a>
+              </li>
+
+              <li>
+                <a href="Graph.html">
+                  <span class="nav-icon">
+                    <i class="material-icons">&#xe24b;</i>
+                  </span>
+                  <span class="nav-text">Graph</span>
+                </a>
+              </li>
+
+
+
+            </ul>
+          </nav>
+        </div>
+        <div flex-no-shrink>
+          <div ui-include="'../views/blocks/aside.bottom.1.html'"></div>
+        </div>
+      </div>
+    </div>
+    <!-- / aside -->
+
+    <!-- content -->
+    <div id="content" class="app-content box-shadow-z3" role="main">
+      <div class="app-header info box-shadow-z4 navbar-md">
+        <div class="navbar navbar-toggleable-sm flex-row align-items-center">
+          <!-- Open side - Naviation on mobile -->
+          <a data-toggle="modal" data-target="#aside" class="hidden-lg-up mr-3">
+            <i class="material-icons">&#xe5d2;</i>
+          </a>
+          <!-- / -->
+
+          <!-- Page title - Bind to $state's title -->
+          <div class="mb-0 h5 no-wrap" ng-bind="$state.current.data.title" id="pageTitle"></div>
+
+          <!-- navbar collapse -->
+          <div class="collapse navbar-collapse" id="collapse">
+            <!-- link and dropdown -->
+            <ul class="nav navbar-nav mr-auto">
+              <li class="nav-item dropdown">
+                <a class="nav-link" href data-toggle="dropdown">
+                  <i class="fa fa-fw fa-plus text-muted"></i>
+                  <span>Dashboard</span>
+                </a>
+                <div ui-include="'../views/blocks/dropdown.new.html'"></div>
+              </li>
+            </ul>
+
+            <div ui-include="'../views/blocks/navbar.form.html'"></div>
+            <!-- / -->
+          </div>
+          <!-- / navbar collapse -->
+
+          <!-- navbar right -->
+          <ul class="nav navbar-nav ml-auto flex-row">
+            <!-- <li class="nav-item dropdown pos-stc-xs">
+              <a class="nav-link mr-2" href data-toggle="dropdown">
+                <i class="material-icons">&#xe7f5;</i>
+                <span class="label label-sm up warn">3</span>
+              </a>
+              <div ui-include="'../views/blocks/dropdown.notification.html'"></div>
+            </li> -->
+            <li class="nav-item dropdown">
+              <a class="nav-link p-0 clear" href="#" data-toggle="dropdown">
+                <span class="avatar w-32">
+                  <img src="../assets/images/a2.jpg" alt="...">
+                  <i class="on b-white bottom"></i>
+                </span>
+              </a>
+              <div ui-include="'../views/blocks/dropdown.user.html'"></div>
+            </li>
+            <li class="nav-item hidden-md-up">
+              <a class="nav-link pl-2" data-toggle="collapse" data-target="#collapse">
+                <i class="material-icons">&#xe5d4;</i>
+              </a>
+            </li>
+          </ul>
+          <!-- / navbar right -->
+        </div>
+      </div>
+      <div class="app-footer">
+        <div class="p-2 text-xs">
+          <div class="pull-right text-muted py-1">
+            &copy; Copyright <strong>Siamvayupak</strong> <span class="hidden-xs-down">- Built with hopeless</span>
+            <a ui-scroll-to="content"><i class="fa fa-long-arrow-up p-x-sm"></i></a>
+          </div>
+          <div class="nav">
+            <a class="nav-link" href="../">About</a>
+            <a class="nav-link" href="http://themeforest.net/user/flatfull/portfolio?ref=flatfull">Get it</a>
+          </div>
+        </div>
+      </div>
+      <div class="app-body" id="view">
+
+        <!-- ############ PAGE START-->
+        <div class="padding" style="background-color:#fff9f9">
+          <div class="margin">
+            <h3 class="mb-0 _300"> <strong>Welcome to SVS IOT</h3>
+            <small style="color: rgb(0, 0, 0)">Report Data real time </small>
+          </div>
+          <div class="row">
+            <div class="col-sm-6 col-md-4 col-lg-12">
+            </div>
+
+          </div>
+
+          <!-- plot design circle 1 -->
+          <!-- hearder -->
+          <div class="row">
+            <div class="col-xl-1.5">
+              <div class="box" style="background-color: rgb(128, 12, 12); border-radius: 10px; padding: 10px;">
+                <h5 style="color: white"> <strong>Current time</h5>
+                <div id="clock" class="clock" style="color: white"></div>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="row">
+            <div class="col-md-12 col-xl-6">
+              <div class="box white-text "
+                style="background-image: url('../assets/images/a6.jpg'); background-size: cover ;  background-position: center; background-repeat: no-repeat; border-radius: 10px; padding: 20px;">
+                <div class="box-header ">
+                  <h2> <strong>INDOOR</strong></h2>
+
+                  <h3>Report form sensor </h3>
+                  <small>Calculated every 10 mintues</small>
+                </div>
+                <!-- icon padding -->
+                <!-- <div class="box-tool">
+                  <ul class="nav">
+                    <li class="nav-item inline">
+                      <a class="nav-link">
+                        <i class="material-icons md-18">&#xe863;</i>
+                      </a>
+                    </li>
+                    <li class="nav-item inline dropdown">
+                      <a class="nav-link" data-toggle="dropdown">
+                        <i class="material-icons md-18">&#xe5d4;</i>
+                      </a>
+                      <div class="dropdown-menu dropdown-menu-scale pull-right">
+                        <a class="dropdown-item" href>This week</a>
+                        <a class="dropdown-item" href>This month</a>
+                        <a class="dropdown-item" href>This week</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item">Today</a>
+                      </div>
+                    </li>
+                  </ul>
+                </div> -->
+                <div class="text-center b-t">
+                  <div class="row-col">
+                    <div class="row-cell p-a " id="temperature-indoor">
+                      <div class="inline m-b">
+                        <div ui-jp="easyPieChart" class="easyPieChart" ui-refresh="app.setting.color" data-redraw='true'
+                          ui-options="{
+	                      lineWidth: 8,
+	                      trackColor: 'rgba(0,0,0,0.05)',
+	                      barColor: '#0cc2aa',
+	                      scaleColor: 'transparent',
+	                      size: 100,
+	                      scaleLength: 0,
+	                      animate:{
+	                        duration: 3000,
+	                        enabled:true
+	                      }
+	                    }">
+                          <div>
+                            <h5></h5>
+                          </div>
+                        </div>
+                      </div>
+                      <div>
+                        Temperature(°C)
+                        <small class="block m-b">Celsius</small>
+                        <a href="/html/Tempindoor.html" class="btn btn-sm white rounded" style="color: black;">More</a>
+                      </div>
+                    </div>
+                    <div class="row-cell p-a dker " id="pressure-indoor">
+                      <div class="inline m-b">
+                        <div ui-jp="easyPieChart" class="easyPieChart" ui-refresh="app.setting.color" data-redraw='true'
+                            ui-options="{
+	                      lineWidth: 8,
+	                      trackColor: 'rgba(0,0,0,0.05)',
+	                      barColor: '#00B9FF',
+	                      scaleColor: 'transparent',
+	                      size: 100,
+	                      scaleLength: 0,
+	                      animate:{
+	                        duration: 3000,
+	                        enabled:true
+	                      }
+	                    }">
+                          <div>
+                            <h5>  </h5>
+                          </div>
+                        </div>
+                      </div>
+                      <div>
+                        Pressure (Pa)
+                        <small class="block m-b">Pascal</small>
+                        <a href="/html/Pressureindoor.html" class="btn btn-sm white rounded" style="color: black;">More</a>
+                      </div>
+                    </div>
+                    <div class="row-cell p-a " id="humidity-indoor" >
+                      <div class="inline m-b">
+                        <div ui-jp="easyPieChart" class="easyPieChart" ui-refresh="app.setting.color" data-redraw='true'
+                           ui-options="{
+	                      lineWidth: 8,
+	                      trackColor: 'rgba(0,0,0,0.05)',
+	                      barColor: '#fcc100',
+	                      scaleColor: 'transparent',
+	                      size: 100,
+	                      scaleLength: 0,
+	                      animate:{
+	                        duration: 3000,
+	                        enabled:true
+	                      }
+	                    }">
+                          <div>
+                            <h5></h5>
+                          </div>
+                        </div>
+                      </div>
+                      <div>
+                        Humidity (%)
+                        <small class="block m-b">percent %</small>
+                        <a href="/html/Humiindoor.html" class="btn btn-sm white rounded" style="color: black;">More</a>
+                      </div>
+
+                    </div>
+                    <div class="ro-cell p-a dker" id="gas-indoor">
+                      <div class="inline m-b">
+                        <div ui-jp="easyPieChart" class="easyPieChart" ui-refresh="app.setting.color" data-redraw='true'
+                           ui-options="{
+	                      lineWidth: 8,
+	                      trackColor: 'rgba(0,0,0,0.05)',
+	                      barColor: '#FA5342',
+	                      scaleColor: 'transparent',
+	                      size: 100,
+	                      scaleLength: 0,
+	                      animate:{
+	                        duration: 3000,
+	                        enabled:true
+	                      }
+	                    }">
+                          <div>
+                            <h5></h5>
+                          </div>
+                        </div>
+                      </div>
+                      <div>
+                        Smoke Gas
+                        <small class="block m-b">Part Per Millions</small>
+                        <a href="/html/Smokegasindoor.html" class="btn btn-sm white rounded" style="color: black;">More</a>
+                      </div>
+
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+            <div class="col-md-12 col-xl-6">
+              <div class="box"
+                style="background-image: url('../assets/images/a7.jpg'); background-size: cover ;  background-position: center; background-repeat: no-repeat; border-radius: 10px; padding: 20px;">
+                <div class="box-header ">
+                  <h2> <strong>OUTDOOR</strong></h2>
+                  <h3>Report form sensor </h3>
+                  <small>Calculated every 10 mintues</small>
+                </div>
+                <!-- <div class="box-tool">
+                  <ul class="nav">
+                    <li class="nav-item inline">
+                      <a class="nav-link">
+                        <i class="material-icons md-18">&#xe863;</i>
+                      </a>
+                    </li>
+                    <li class="nav-item inline dropdown">
+                      <a class="nav-link" data-toggle="dropdown">
+                        <i class="material-icons md-18">&#xe5d4;</i>
+                      </a>
+                      <div class="dropdown-menu dropdown-menu-scale pull-right">
+                        <a class="dropdown-item" href>This week</a>
+                        <a class="dropdown-item" href>This month</a>
+                        <a class="dropdown-item" href>This week</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item">Today</a>
+                      </div>
+                    </li>
+                  </ul>
+                </div> -->
+                <div class="text-center b-t">
+                  <div class="row-col">
+                    <div class="row-cell p-a" id="temperature-outdoor">
+                      <div class="inline m-b">
+                        <div ui-jp="easyPieChart" class="easyPieChart" ui-refresh="app.setting.color" data-redraw='true'
+                           ui-options="{
+                          lineWidth: 8,
+                          trackColor: 'rgba(0,0,0,0.05)',
+                          barColor: '#0cc2aa',
+                          scaleColor: 'transparent',
+                          size: 100,
+                          scaleLength: 0,
+                          animate:{
+                            duration: 3000,
+                            enabled:true
+                          }
+                        }">
+                          <div>
+                            <h5></h5>
+                          </div>
+                        </div>
+                      </div>
+                      <div>
+                        Temperature(°C)
+                        <small class="block m-b">Celsius</small>
+                        <a href="/html/Tempoutdoor.html" class="btn btn-sm white rounded" style="color: black;">More</a>
+                      </div>
+                    </div>
+                    <div class="row-cell p-a dker " id="pressure-outdoor">
+                      <div class="inline m-b">
+                        <div ui-jp="easyPieChart" class="easyPieChart" ui-refresh="app.setting.color" data-redraw='true'
+                            ui-options="{
+	                      lineWidth: 8,
+	                      trackColor: 'rgba(0,0,0,0.05)',
+	                      barColor: '#00B9FF',
+	                      scaleColor: 'transparent',
+	                      size: 100,
+	                      scaleLength: 0,
+	                      animate:{
+	                        duration: 3000,
+	                        enabled:true
+	                      }
+	                    }">
+                          <div>
+                            <h5>  </h5>
+                          </div>
+                        </div>
+                      </div>
+                      <div>
+                        Pressure (Pa)
+                        <small class="block m-b">Pascal</small>
+                        <a href="/html/Pressureoutdoor.html" class="btn btn-sm white rounded" style="color: black;">More</a>
+                      </div>
+                    </div>
+                    <div class="row-cell p-a " id="humidity-outdoor">
+                      <div class="inline m-b">
+                        <div ui-jp="easyPieChart" class="easyPieChart" ui-refresh="app.setting.color" data-redraw='true'
+                           ui-options="{
+                          lineWidth: 8,
+                          trackColor: 'rgba(0,0,0,0.05)',
+                          barColor: '#fcc100',
+                          scaleColor: 'transparent',
+                          size: 100,
+                          scaleLength: 0,
+                          animate:{
+                            duration: 3000,
+                            enabled:true
+                          }
+                        }">
+                          <div>
+                            <h5></h5>
+                          </div>
+                        </div>
+                      </div>
+                      <div>
+                        Humidity (%)
+                        <small class="block m-b">percent %</small>
+                        <a href="/html/Humioutdoor.html" class="btn btn-sm white rounded">More</a>
+                      </div>
+
+                    </div>
+                    <div class="row-cell p-a dker" id="gas-outdoor" >
+                      <div class="inline m-b">
+                        <div ui-jp="easyPieChart" class="easyPieChart" ui-refresh="app.setting.color" data-redraw='true'
+                            ui-options="{
+                          lineWidth: 8,
+                          trackColor: 'rgba(0,0,0,0.05)',
+                          barColor: '#FA5342',
+                          scaleColor: 'transparent',
+                          size: 100,
+                          scaleLength: 0,
+                          animate:{
+                            duration: 3000,
+                            enabled:true
+                          }
+                        }">
+                          <div>
+                            <h5>500 PPM</h5>
+                          </div>
+                        </div>
+                      </div>
+                      <div>
+                        Smoke Gas
+                        <small class="block m-b">Part Per Millions</small>
+                        <a href="/html/Smokegasoutdoor.html" class="btn btn-sm white rounded">More</a>
+                      </div>
+
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- plot design circle 2 -->
+
+        </div>
+
+        <!-- / -->
+
+        <!-- theme switcher -->
+
+        <!-- / -->
+
+        <!-- ############ LAYOUT END-->
+
+      </div>
+    </div>
+  </div>
+
+  <script src="../libs/jquery/jquery/dist/jquery.js"></script>
+  <!-- Bootstrap -->
+  <script src="../libs/jquery/tether/dist/js/tether.min.js"></script>
+  <script src="../libs/jquery/bootstrap/dist/js/bootstrap.js"></script>
+  <!-- core -->
+  <script src="../libs/jquery/underscore/underscore-min.js"></script>
+  <script src="../libs/jquery/jQuery-Storage-API/jquery.storageapi.min.js"></script>
+  <script src="../libs/jquery/PACE/pace.min.js"></script>
+
+  <script src="scripts/config.lazyload.js"></script>
+
+  <script src="scripts/palette.js"></script>
+  <script src="scripts/ui-load.js"></script>
+  <script src="scripts/ui-jp.js"></script>
+  <script src="scripts/ui-include.js"></script>
+  <script src="scripts/ui-device.js"></script>
+  <script src="scripts/ui-form.js"></script>
+  <script src="scripts/ui-nav.js"></script>
+  <script src="scripts/ui-screenfull.js"></script>
+  <script src="scripts/ui-scroll-to.js"></script>
+  <script src="scripts/ui-toggle-class.js"></script>
+
+  <script src="scripts/app.js"></script>
+  <script src="scripts/newfunc.js"></script>
+  <script src="scripts/currentdata.js"></Script>
+  
+
+
+  </script>
+  <!-- ajax -->
+  <script src="../libs/jquery/jquery-pjax/jquery.pjax.js"></script>
+  <script src="scripts/ajax.js"></script>
+  <!-- endbuild -->
+
+  <script>
+    $(document).ready(function () {
+      // Function to update the clock
+      function updateClock() {
+        var now = new Date();
+        var hours = ('0' + now.getHours()).slice(-2);
+        var minutes = ('0' + now.getMinutes()).slice(-2);
+        var seconds = ('0' + now.getSeconds()).slice(-2);
+        var timeString = hours + ':' + minutes + ':' + seconds;
+        $('#clock').text(timeString);
+      }
+  
+      // Update the clock every second
+      setInterval(updateClock, 1000);
+  
+      // Initial update to display the clock immediately
+      updateClock();
+    });
+  </script>
+  
+    
+</body>
+
+
+</html>

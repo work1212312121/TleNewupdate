@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<link>
+<meta charset="utf-8" />
+<title>Siamvayupak IOT</title>
+<meta name="description" content="Admin, Dashboard, Bootstrap, Bootstrap 4, Angular, AngularJS" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<!-- for ios 7 style, multi-resolution icon of 152x152 -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-barstyle" content="black-translucent">
+<link rel="apple-touch-icon" href="../assets/images/logo.png">
+<meta name="apple-mobile-web-app-title" content="Flatkit">
+<!-- for Chrome on Android, multi-resolution icon of 196x196 -->
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="shortcut icon" sizes="196x196" href="../assets/images/logo.png">
+
+<!-- style -->
+<link rel="stylesheet" href="../assets/animate.css/animate.min.css" type="text/css" />
+<link rel="stylesheet" href="../assets/glyphicons/glyphicons.css" type="text/css" />
+<link rel="stylesheet" href="../assets/font-awesome/css/font-awesome.min.css" type="text/css" />
+<link rel="stylesheet" href="../assets/material-design-icons/material-design-icons.css" type="text/css" />
+<link rel="stylesheet" href="../assets/dist/apexcharts.css" />
+
+
+
+<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+<link rel="stylesheet" href="../assets/bootstrap/dist/css/bootstrap.min.css" type="text/css" />
+<!-- build:css ../assets/styles/app.min.css -->
+<link rel="stylesheet" href="../assets/styles/app.css" type="text/css" />
+<!-- endbuild -->
+<link rel="stylesheet" href="../assets/styles/font.css" type="text/css" />
+<script src="scripts/Autorefresh.js" defer></script>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: flex;
+    margin: 0;
+    overflow-y: scroll;
+
+  }
+
+  .padding-box {
+    padding: 5rem 15rem 5rem 5rem;
+    
+  }
+
+  .Assumecontainer {
+    width: 80%;
+    height: 500px;
+    margin: 50px auto;
+    border: 1px solid #ccc;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .containerRow {
+    display: flex;
+    justify-content: space-between;
+    /* Adjusts space between items */
+    flex-wrap: wrap;
+    /* Allows wrapping to the next line if needed */
+  }
+
+  .chart-container {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    max-width: 1600px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 5rem 1.5rem;
+  }
+
+  .chart-box {
+    width: flex;
+    height: flex;
+    position: center;
+    justify-content: space-between;
+  }
+
+  .chart-box canvas {
+    width: 100%;
+    height: 350px;
+  }
+
+  .assumeblock {
+    display: flex;
+    justify-content: space-between;
+
+  }
+
+  .btn {
+    background: #1036b3;
+    border: solid 1px #013cff;
+    background: linear-gradient(180deg, #094aff 0%, #2A4395 35%, #860fad 100%);
+    border-radius: 8px;
+    color: white;
+    padding: flex;
+    transition: color .2s ease-in-out, box-shadow .2s ease-in-out;
+
+
+  }
+
+  .btn:hover {
+    color: #fff;
+    box-shadow: inset 200px 0 0 0 #54b3d6;
+
+  }
+
+  #temp-bar {
+    display: none;
+  }
+</style>
+</head>
+
+<body>
+
+  <div class="app" id="app">
+
+    <!-- ############ LAYOUT START-->
+
+    <!-- aside -->
+    <div id="aside" class="app-aside box-shadow-z3 modal fade lg nav-expand">
+      <div class="left navside white dk" layout="column">
+        <div class="navbar navbar-md info no-radius box-shadow-z4">
+
+          <a class="navbar-brand">
+            <div ui-include="'../assets/images/logo.white.svg'"></div>
+            <img src="../assets/images/logo.png" alt="." class="hide">
+            <span class="hidden-folded inline">SVS IOT</span>
+          </a>
+
+        </div>
+
+
+        <div flex class="hide-scroll">
+          <nav class="scroll">
+
+            <ul class="nav" ui-nav>
+              <li class="nav-header hidden-folded">
+                <small class="text-muted">Option</small>
+
+              </li>
+              <li>
+                <a href="Main.html">
+                  <span class="nav-icon">
+                    <i class="material-icons">&#xe3fc;
+                      <span ui-include="'../assets/images/i_0.svg'"></span>
+                    </i>
+                  </span>
+                  <span class="nav-text"> Main</span>
+                </a>
+              </li>
+              <li>
+                <a href="logdata.html">
+                  <span class="nav-icon">
+                    <i class="material-icons">list_alt</i>
+                  </span>
+                  <span class="nav-text">Log Data</span>
+                </a>
+              </li>
+
+
+
+
+              <li>
+                <a href="Map.html">
+                  <span class="nav-icon">
+                    <i class="material-icons">&#xe55b;</i>
+                  </span>
+                  <span class="nav-text">Map</span>
+                </a>
+              </li>
+
+              <li>
+                <a href="Graph.html">
+                  <span class="nav-icon">
+                    <i class="material-icons">&#xe24b;</i>
+                  </span>
+                  <span class="nav-text">Graph</span>
+                </a>
+              </li>
+
+
+
+            </ul>
+          </nav>
+        </div>
+        <div flex-no-shrink>
+          <div ui-include="'../views/blocks/aside.bottom.1.html'"></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="content" class="app-content box-shadow-z3" role="main">
+      <div class="app-header info box-shadow-z4 navbar-md">
+        <div class="navbar navbar-toggleable-sm flex-row align-items-center">
+          <!-- Open side - Naviation on mobile -->
+          <a data-toggle="modal" data-target="#aside" class="hidden-lg-up mr-3">
+            <i class="material-icons">&#xe5d2;</i>
+          </a>
+          <!-- / -->
+
+          <!-- Page title - Bind to $state's title -->
+          <div class="mb-0 h5 no-wrap" ng-bind="$state.current.data.title" id="pageTitle"></div>
+
+          <!-- navbar collapse -->
+          <div class="collapse navbar-collapse" id="collapse">
+            <!-- link and dropdown -->
+            <ul class="nav navbar-nav mr-auto">
+              <li class="nav-item dropdown">
+                <a class="nav-link" href data-toggle="dropdown">
+                  <i class="fa fa-fw fa-plus text-muted"></i>
+                  <span>Dashboard</span>
+                </a>
+                <div ui-include="'../views/blocks/dropdown.new.html'"></div>
+              </li>
+            </ul>
+
+            <div ui-include="'../views/blocks/navbar.form.html'"></div>
+            <!-- / -->
+          </div>
+          <!-- / navbar collapse -->
+
+          <!-- navbar right -->
+          <ul class="nav navbar-nav ml-auto flex-row">
+            <!-- <li class="nav-item dropdown pos-stc-xs">
+              <a class="nav-link mr-2" href data-toggle="dropdown">
+                <i class="material-icons">&#xe7f5;</i>
+                <span class="label label-sm up warn">3</span>
+              </a>
+              <div ui-include="'../views/blocks/dropdown.notification.html'"></div>
+            </li> -->
+            <li class="nav-item dropdown">
+              <a class="nav-link p-0 clear" href="#" data-toggle="dropdown">
+                <span class="avatar w-32">
+                  <img src="../assets/images/a2.jpg" alt="...">
+                  <i class="on b-white bottom"></i>
+                </span>
+              </a>
+              <div ui-include="'../views/blocks/dropdown.user.html'"></div>
+            </li>
+            <li class="nav-item hidden-md-up">
+              <a class="nav-link pl-2" data-toggle="collapse" data-target="#collapse">
+                <i class="material-icons">&#xe5d4;</i>
+              </a>
+            </li>
+          </ul>
+          <!-- / navbar right -->
+        </div>
+      </div>
+      <div class="app-footer">
+        <div class="p-2 text-xs">
+          <div class="pull-right text-muted py-1">
+            &copy; Copyright <strong>Siamvayupak</strong> <span class="hidden-xs-down">- Built with hopeless</span>
+            <a ui-scroll-to="content"><i class="fa fa-long-arrow-up p-x-sm"></i></a>
+          </div>
+          <div class="nav">
+            <a class="nav-link" href="../">About</a>
+            <a class="nav-link" href="http://themeforest.net/user/flatfull/portfolio?ref=flatfull">Get it</a>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- ############ PAGE START-->
+      <div class="row">
+        <div class="col-md-12 col-xl-10">
+          <div class="padding-box" style="background-color:#ffffff ;border-radius: 10px; ">
+            <div class="margin">
+              <h5 class="mb-0 _300"> Temperature Chart</h5>
+              <small class="text-muted">Report Data real time </small>
+              <div class="assumeblock">
+                <button id="toggle-chart-btn" class="btn">Toggle Chart</button>
+              </div>
+            </div>
+
+
+            <div class="chart-box">
+              <div id="temp-line"></div>
+              <div id="temp-bar"></div>
+            </div>
+          </div>
+          <br>
+
+
+          <!-- <div class="col-md-12 col-xl-10"
+          <div class="padding" style="background-color:#ffffff ;border-radius: 10px; padding: 20px;">
+            <div class="margin">
+              <h5 class="mb-0 _300"> Chart</h5>
+              <small class="text-muted">Report Data real time </small>
+              <div class="assumeblock">
+                <button id="toggle-chart-btn" class="btn">Toggle Chart</button>
+              </div>
+            </div>
+  
+            <div class="chart-box">
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+      </div>  -->
+
+
+
+
+        </div>
+      </div>
+      <script src="../libs/jquery/jquery/dist/jquery.js"></script>
+      <!-- Bootstrap -->
+      <script src="../libs/jquery/tether/dist/js/tether.min.js"></script>
+      <script src="../libs/jquery/bootstrap/dist/js/bootstrap.js"></script>
+      <!-- core -->
+      <script src="../libs/jquery/underscore/underscore-min.js"></script>
+      <script src="../libs/jquery/jQuery-Storage-API/jquery.storageapi.min.js"></script>
+      <script src="../libs/jquery/PACE/pace.min.js"></script>
+
+      <script src="scripts/config.lazyload.js"></script>
+
+      <script src="scripts/palette.js"></script>
+      <script src="scripts/ui-load.js"></script>
+      <script src="scripts/ui-jp.js"></script>
+      <script src="scripts/ui-include.js"></script>
+      <script src="scripts/ui-device.js"></script>
+      <script src="scripts/ui-form.js"></script>
+      <script src="scripts/ui-nav.js"></script>
+      <script src="scripts/ui-screenfull.js"></script>
+      <script src="scripts/ui-scroll-to.js"></script>
+      <script src="scripts/ui-toggle-class.js"></script>
+
+
+      <script src="scripts/app.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.slim.min.js"></script>
+      <script src="scripts/Chart.js"></script>
+      <script type="module" src="scripts/Chart.js"></script>
+      <script src="../assets/dist/apexcharts.min.js"></script>
+      <script>
+        // Initialize myChart1 and myChart2 globally
+        let myChart1, myChart2;
+
+        // Chart.js setup
+        document.addEventListener('DOMContentLoaded', function () {
+          const ctx1 = document.getElementById('myChart1').getContext('2d');
+          const ctx2 = document.getElementById('myChart2').getContext('2d');
+
+          // Chart.js data and options
+          const data = {
+            labels: [],
+            datasets: [{
+              label: 'Temperature',
+              data: [],
+              backgroundColor: 'rgba(54, 162, 235, 0.2)',
+              borderColor: 'rgba(54, 162, 235, 1)',
+              borderWidth: 2,
+              fill: true,
+              tension: 0.4
+            }]
+          };
+
+          const options = {
+            responsive: true,
+            scales: {
+              y: {
+                beginAtZero: true
+              }
+            },
+            plugins: {
+              legend: {
+                display: true,
+                labels: {
+                  color: '#333'
+                }
+              }
+            }
+          };
+
+          // Create Chart.js instances
+          myChart1 = new Chart(ctx1, {
+            type: 'line',
+            data: data,
+            options: options
+          });
+
+          myChart2 = new Chart(ctx2, {
+            type: 'line',
+            data: data,
+            options: options
+          });
+        });
+
+        // Function to fetch data from the API URLs
+        function fetchData(url, callback) {
+          fetch(url)
+            .then(response => response.json())
+            .then(data => callback(data))
+            .catch(error => console.error('Error fetching data:', error));
+        }
+
+        // Fetch indoor temperature data
+        fetchData('https://partially-unique-haddock.ngrok-free.app/api/indoor_temperature', function (data) {
+          // Assuming data is an array of objects with { datatime, rawdata }
+          const indoorData = {
+            labels: data.map(entry => entry.datatime), // Assuming datatime field in data
+            datasets: [{
+              label: 'Indoor Temperature',
+              data: data.map(entry => entry.rawdata), // Assuming rawdata field in data
+              backgroundColor: 'rgba(255, 99, 132, 0.2)',
+              borderColor: 'rgba(255, 99, 132, 1)',
+              borderWidth: 2,
+              fill: true,
+              tension: 0.4
+            }]
+          };
+          // Update myChart1 with indoor temperature data
+          myChart1.data = indoorData;
+          myChart1.update(); // Redraw chart
+        });
+
+        // Fetch outdoor temperature data
+        fetchData('https://partially-unique-haddock.ngrok-free.app/api/outdoor_temperature', function (data) {
+          // Assuming data is an array of objects with { datatime, rawdata }
+          const outdoorData = {
+            labels: data.map(entry => entry.datatime), // Assuming datatime field in data
+            datasets: [{
+              label: 'Outdoor Temperature',
+              data: data.map(entry => entry.rawdata), // Assuming rawdata field in data
+              backgroundColor: 'rgba(54, 162, 235, 0.2)',
+              borderColor: 'rgba(54, 162, 235, 1)',
+              borderWidth: 2,
+              fill: true,
+              tension: 0.4
+            }]
+          };
+          // Update myChart2 with outdoor temperature data
+          myChart2.data = outdoorData;
+          myChart2.update(); // Redraw chart
+        });
+      </script>
+
+      <!-- ajax -->
+      <script src="../libs/jquery/jquery-pjax/jquery.pjax.js"></script>
+      <script src="scripts/ajax.js"></script>
+
+      <!-- endbuild -->
+
+</body>
+
+
+</html>

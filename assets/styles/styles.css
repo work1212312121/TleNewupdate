@@ -1,0 +1,25 @@
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    background-color:#746f6f;
+    color: #f9f9f9;
+    border: solid;
+    
+}
+
+.item {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #f9f9f9;
+}
+
+.item p {
+    margin: 5px 0;
+}
+
+.item hr {
+    margin: 10px 0;
+}

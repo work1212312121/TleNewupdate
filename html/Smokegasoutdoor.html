@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Siamvayupak IOT</title>
+  <meta name="description" content="Admin, Dashboard, Bootstrap, Bootstrap 4, Angular, AngularJS" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!-- for ios 7 style, multi-resolution icon of 152x152 -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-barstyle" content="black-translucent">
+  <link rel="apple-touch-icon" href="../assets/images/logo.png">
+  <meta name="apple-mobile-web-app-title" content="Flatkit">
+  <!-- for Chrome on Android, multi-resolution icon of 196x196 -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <link rel="shortcut icon" sizes="196x196" href="../assets/images/logo.png">
+
+  <!-- style -->
+  <link rel="stylesheet" href="../assets/animate.css/animate.min.css" type="text/css" />
+  <link rel="stylesheet" href="../assets/glyphicons/glyphicons.css" type="text/css" />
+  <link rel="stylesheet" href="../assets/font-awesome/css/font-awesome.min.css" type="text/css" />
+  <link rel="stylesheet" href="../assets/material-design-icons/material-design-icons.css" type="text/css" />
+
+  <link rel="stylesheet" href="../assets/bootstrap/dist/css/bootstrap.min.css" type="text/css" />
+  <!-- build:css ../assets/styles/app.min.css -->
+  <link rel="stylesheet" href="../assets/styles/app.css" type="text/css" />
+  <!-- endbuild -->
+  <link rel="stylesheet" href="../assets/styles/font.css" type="text/css" />
+  <script src="scripts/Autorefresh.js" defer></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background-color: #ffffff;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      color: #f0f0f0;
+    }
+
+    th,
+    td {
+      padding: 8px;
+      text-align: left;
+      border: 1px solid #000000;
+    }
+
+    th {
+      background-color: #4a4a4a;
+    }
+
+    tr:nth-child(even) {
+      background-color: #3a3a3a;
+    }
+
+    tr:nth-child(odd) {
+      background-color: #2a2a2a;
+    }
+
+    .highlighted {
+      background-color: #3957ff;
+    }
+
+    .container {
+      overflow-y: auto;
+      width: auto;
+      height: auto;
+
+    }
+  </style>
+</head>
+
+<body>
+  <p id="original"></p>
+
+  <div id="content"></div>
+  <div class="app" id="app">
+
+    <!-- ############ LAYOUT START-->
+
+    <!-- aside -->
+    <div id="aside" class="app-aside box-shadow-z3 modal fade lg nav-expand">
+      <div class="left navside white dk" layout="column">
+        <div class="navbar navbar-md info no-radius box-shadow-z4">
+
+          <a class="navbar-brand">
+            <div ui-include="'../assets/images/logo.white.svg'"></div>
+            <img src="../assets/images/logo.png" alt="." class="hide">
+            <span class="hidden-folded inline">SVS IOT</span>
+          </a>
+
+        </div>
+
+
+        <div flex class="hide-scroll">
+          <nav class="scroll">
+
+            <ul class="nav" ui-nav>
+              <li class="nav-header hidden-folded">
+                <small class="text-muted">Option</small>
+
+              </li>
+              <li>
+                <a href="Main.html">
+                  <span class="nav-icon">
+                    <i class="material-icons">&#xe3fc;
+                      <span ui-include="'../assets/images/i_0.svg'"></span>
+                    </i>
+                  </span>
+                  <span class="nav-text"> Main</span>
+                </a>
+              </li>
+              <li>
+                <a href="logdata.html">
+                  <span class="nav-icon">
+                    <i class="material-icons">list_alt</i>
+                  </span>
+                  <span class="nav-text">Log Data</span>
+                </a>
+              </li>
+
+
+
+
+              <li>
+                <a href="Map.html">
+                  <span class="nav-icon">
+                    <i class="material-icons">&#xe55b;</i>
+                  </span>
+                  <span class="nav-text">Map</span>
+                </a>
+              </li>
+
+              <li>
+                <a href="Graph.html">
+                  <span class="nav-icon">
+                    <i class="material-icons">&#xe24b;</i>
+                  </span>
+                  <span class="nav-text">Graph</span>
+                </a>
+              </li>
+
+
+
+            </ul>
+          </nav>
+        </div>
+        <div flex-no-shrink>
+          <div ui-include="'../views/blocks/aside.bottom.1.html'"></div>
+        </div>
+      </div>
+    </div>
+    <!-- / aside -->
+
+    <!-- content -->
+    <div id="content" class="app-content box-shadow-z3" role="main">
+      <div class="app-header info box-shadow-z4 navbar-md">
+        <div class="navbar navbar-toggleable-sm flex-row align-items-center">
+          <!-- Open side - Naviation on mobile -->
+          <a data-toggle="modal" data-target="#aside" class="hidden-lg-up mr-3">
+            <i class="material-icons">&#xe5d2;</i>
+          </a>
+          <!-- / -->
+
+          <!-- Page title - Bind to $state's title -->
+          <div class="mb-0 h5 no-wrap" ng-bind="$state.current.data.title" id="pageTitle"></div>
+
+          <!-- navbar collapse -->
+          <div class="collapse navbar-collapse" id="collapse">
+            <!-- link and dropdown -->
+            <ul class="nav navbar-nav mr-auto">
+              <li class="nav-item dropdown">
+                <a class="nav-link" href data-toggle="dropdown">
+                  <i class="fa fa-fw fa-plus text-muted"></i>
+                  <span>Dashboard</span>
+                </a>
+                <div ui-include="'../views/blocks/dropdown.new.html'"></div>
+              </li>
+            </ul>
+
+            <div ui-include="'../views/blocks/navbar.form.html'"></div>
+            <!-- / -->
+          </div>
+          <!-- / navbar collapse -->
+
+          <!-- navbar right -->
+          <ul class="nav navbar-nav ml-auto flex-row">
+            <!-- <li class="nav-item dropdown pos-stc-xs">
+              <a class="nav-link mr-2" href data-toggle="dropdown">
+                <i class="material-icons">&#xe7f5;</i>
+                <span class="label label-sm up warn">3</span>
+              </a>
+              <div ui-include="'../views/blocks/dropdown.notification.html'"></div>
+            </li> -->
+            <li class="nav-item dropdown">
+              <a class="nav-link p-0 clear" href="#" data-toggle="dropdown">
+                <span class="avatar w-32">
+                  <img src="../assets/images/a2.jpg" alt="...">
+                  <i class="on b-white bottom"></i>
+                </span>
+              </a>
+              <div ui-include="'../views/blocks/dropdown.user.html'"></div>
+            </li>
+            <li class="nav-item hidden-md-up">
+              <a class="nav-link pl-2" data-toggle="collapse" data-target="#collapse">
+                <i class="material-icons">&#xe5d4;</i>
+              </a>
+            </li>
+          </ul>
+          <!-- / navbar right -->
+        </div>
+      </div>
+      <div class="app-footer">
+        <div class="p-2 text-xs">
+          <div class="pull-right text-muted py-1">
+            &copy; Copyright <strong>Siamvayupak</strong> <span class="hidden-xs-down">- Built with hopeless</span>
+            <a ui-scroll-to="content"><i class="fa fa-long-arrow-up p-x-sm"></i></a>
+          </div>
+          <div class="nav">
+            <a class="nav-link" href="../">About</a>
+            <a class="nav-link" href="http://themeforest.net/user/flatfull/portfolio?ref=flatfull">Get it</a>
+          </div>
+        </div>
+      </div>
+      <div class="app-body" id="view">
+
+        <!-- ############ PAGE START-->
+        <div class="padding" style="background-color:#ffffff">
+          <div class="margin">
+            <h5 class="mb-0 _300"> <strong> Report Table</h5>
+            <small style="color: black;">Report Data real time </small>
+          </div>
+          <div class="row">
+            <div class="col-sm-6 col-md-4 col-lg-12">
+            </div>
+
+          </div>
+
+          <!-- plot design circle 1 -->
+          <!-- hearder -->
+
+          <div class="row">
+            <div class="col-md-12 col-xl-12">
+              <div class="box" style="background-color: rgb(110, 109, 109); border-radius: 10px; padding: 20px;">
+                <div class="box-header ">
+                  <h2> <strong>INDOOR</strong></h2>
+
+                  <h3>Report form sensor </h3>
+                  <small>Calculated every 10 mintues</small>
+                </div>
+                <div class="box-tool">
+                  <ul class="nav">
+                    <li class="nav-item inline">
+                      <a class="nav-link">
+                        <i class="material-icons md-18">&#xe863;</i>
+                      </a>
+                    </li>
+                    <li class="nav-item inline dropdown">
+                      <a class="nav-link" data-toggle="dropdown">
+                        <i class="material-icons md-18">&#xe5d4;</i>
+                      </a>
+                      <div class="dropdown-menu dropdown-menu-scale pull-right">
+                        <a class="dropdown-item" href="logtableindoor.html"> logtable</a>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+                <div class="container">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>asset_ty</th>
+                        <th>asset_uuid</th>
+                        <th>datatime</th>
+                        <th>device_brand</th>
+                        <th>device_controller</th>
+                        <th>device_model</th>
+                        <th>device_name</th>
+                        <th>device_status</th>
+                        <th>device_unit</th>
+                        <th>device_uuid</th>
+                        <th>id</th>
+                        <th>imeasurement_type</th>
+                        <th>rawdata</th>
+                      </tr>
+                    </thead>
+                    <!-- Indoor Display -->
+                    <tbody id="data-gas-outdoor">
+                      <!-- Data will be appended here -->
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- / -->
+
+          <!-- theme switcher -->
+
+          <!-- / -->
+
+          <!-- ############ LAYOUT END-->
+
+        </div>
+      </div>
+    </div>
+    <script src="../libs/jquery/jquery/dist/jquery.js"></script>
+    <!-- Bootstrap -->
+    <script src="../libs/jquery/tether/dist/js/tether.min.js"></script>
+    <script src="../libs/jquery/bootstrap/dist/js/bootstrap.js"></script>
+    <!-- core -->
+    <script src="../libs/jquery/underscore/underscore-min.js"></script>
+    <script src="../libs/jquery/jQuery-Storage-API/jquery.storageapi.min.js"></script>
+    <script src="../libs/jquery/PACE/pace.min.js"></script>
+
+    <script src="scripts/config.lazyload.js"></script>
+
+    <script src="scripts/palette.js"></script>
+    <script src="scripts/ui-load.js"></script>
+    <script src="scripts/ui-jp.js"></script>
+    <script src="scripts/ui-include.js"></script>
+    <script src="scripts/ui-device.js"></script>
+    <script src="scripts/ui-form.js"></script>
+    <script src="scripts/ui-nav.js"></script>
+    <script src="scripts/ui-screenfull.js"></script>
+    <script src="scripts/ui-scroll-to.js"></script>
+    <script src="scripts/ui-toggle-class.js"></script>
+
+    <script src="scripts/app.js"></script>
+    <script>
+      // URL from which you want to fetch the data
+      const url = 'https://partially-unique-haddock.ngrok-free.app/api/outdoor_gas';
+
+      // Function to fetch data from the URL
+      fetch(url)
+        .then(response => {
+          // Check if the response is successful
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          // Parse the JSON response
+          return response.json();
+        })
+        .then(data => {
+          // Function to append data to the table body
+          const appendDataToTable = (data) => {
+            const tbody = document.getElementById('data-gas-outdoor');
+            data.forEach(item => {
+              // Create a new table row
+              const row = document.createElement('tr');
+              // Iterate through each property in the item
+              for (const key in item) {
+                // Create a new table cell
+                const cell = document.createElement('td');
+                // Set the inner HTML of the cell to the value of the property
+                cell.textContent = item[key];
+                // Append the cell to the row
+                row.appendChild(cell);
+              }
+              // Append the row to the table body
+              tbody.appendChild(row);
+            });
+          };
+          // Call the function to append data to the table body
+          appendDataToTable(data);
+        })
+        .catch(error => {
+          console.error('There was a problem with the fetch operation:', error);
+        });
+
+
+    </script>
+
+    <!-- ajax -->
+    <script src="../libs/jquery/jquery-pjax/jquery.pjax.js"></script>
+    <script src="scripts/ajax.js"></script>
+    <!-- endbuild -->
+</body>
+
+
+</html>
