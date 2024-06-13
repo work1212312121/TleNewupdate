@@ -22,6 +22,8 @@
   <link rel="stylesheet" href="../assets/glyphicons/glyphicons.css" type="text/css" />
   <link rel="stylesheet" href="../assets/font-awesome/css/font-awesome.min.css" type="text/css" />
   <link rel="stylesheet" href="../assets/material-design-icons/material-design-icons.css" type="text/css" />
+  <link rel="stylesheet" href="../assets/styles/slidebar.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
   <link rel="stylesheet" href="../assets/bootstrap/dist/css/bootstrap.min.css" type="text/css" />
   <!-- build:css ../assets/styles/app.min.css -->
@@ -29,7 +31,7 @@
   <!-- endbuild -->
   <link rel="stylesheet" href="../assets/styles/font.css" type="text/css" />
   <script src="scripts/Autorefresh.js" defer></script>
- 
+
 </head>
 
 <body>
@@ -70,333 +72,278 @@
     }
 
     .container {
-      overflow-y:scroll ;
+      overflow-y: scroll;
       width: auto;
       height: 600px;
-      
+
     }
   </style>
   <p id="original"></p>
 
   <div id="content"></div>
-  
+
   <div class="app" id="app">
 
     <!-- ############ LAYOUT START-->
 
     <!-- aside -->
-    <div id="aside" class="app-aside box-shadow-z3 modal fade lg nav-expand">
-      <div class="left navside white dk" layout="column">
-        <div class="navbar navbar-md info no-radius box-shadow-z4">
+    <div class="app" id="app">
 
-          <a class="navbar-brand">
-            <div ui-include="'../assets/images/logo.white.svg'"></div>
-            <img src="../assets/images/logo.png" alt="." class="hide">
-            <span class="hidden-folded inline">SVS IOT</span>
-          </a>
+      <!-- ############ LAYOUT START-->
 
-        </div>
-
-
-        <div flex class="hide-scroll">
-          <nav class="scroll">
-
-            <ul class="nav" ui-nav>
-              <li class="nav-header hidden-folded">
-                <small class="text-muted">Option</small>
-
-              </li>
-              <li>
-                <a href="Main.html">
-                  <span class="nav-icon">
-                    <i class="material-icons">&#xe3fc;
-                      <span ui-include="'../assets/images/i_0.svg'"></span>
-                    </i>
-                  </span>
-                  <span class="nav-text"> Main</span>
-                </a>
-              </li>
-              <li>
-                <a href="logdata.html">
-                  <span class="nav-icon">
-                    <i class="material-icons">list_alt</i>
-                  </span>
-                  <span class="nav-text">Log Data</span>
-                </a>
-              </li>
-
-
-
-
-              <li>
-                <a href="Map.html">
-                  <span class="nav-icon">
-                    <i class="material-icons">&#xe55b;</i>
-                  </span>
-                  <span class="nav-text">Map</span>
-                </a>
-              </li>
-
-              <li>
-                <a href="Graph.html">
-                  <span class="nav-icon">
-                    <i class="material-icons">&#xe24b;</i>
-                  </span>
-                  <span class="nav-text">Graph</span>
-                </a>
-              </li>
-
-
-
-            </ul>
-          </nav>
-        </div>
-        <div flex-no-shrink>
-          <div ui-include="'../views/blocks/aside.bottom.1.html'"></div>
-        </div>
+      <!-- aside -->
+      <div id="sidebar" class="sidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeSidebar()">&times;</a>
+        <a href="../html/Main.html"><i class="fas fa-home"></i> Home</a>
+        <a href="../html/Logdata.html"><i class="fas fa-file-alt"></i> LogTable</a>
+        <a href="../html/Map.html"><i class="fas fa-map-marker-alt"></i> Map</a>
+        <a href="../html/Graph.html"><i class="fas fa-chart-line"></i> Charts</a>
       </div>
-    </div>
-    <!-- / aside -->
 
-    <!-- content -->
-    <div id="content" class="app-content box-shadow-z3" role="main">
-      <div class="app-header info box-shadow-z4 navbar-md">
-        <div class="navbar navbar-toggleable-sm flex-row align-items-center">
-          <!-- Open side - Naviation on mobile -->
-          <a data-toggle="modal" data-target="#aside" class="hidden-lg-up mr-3">
-            <i class="material-icons">&#xe5d2;</i>
-          </a>
-          <!-- / -->
+      <!-- / aside -->
 
-          <!-- Page title - Bind to $state's title -->
-          <div class="mb-0 h5 no-wrap" ng-bind="$state.current.data.title" id="pageTitle"></div>
-
-          <!-- navbar collapse -->
-          <div class="collapse navbar-collapse" id="collapse">
-            <!-- link and dropdown -->
-            <ul class="nav navbar-nav mr-auto">
-              <li class="nav-item dropdown">
-                <a class="nav-link" href data-toggle="dropdown">
-                  <i class="fa fa-fw fa-plus text-muted"></i>
-                  <span>Dashboard</span>
-                </a>
-                <div ui-include="'../views/blocks/dropdown.new.html'"></div>
-              </li>
-            </ul>
-
-            <div ui-include="'../views/blocks/navbar.form.html'"></div>
+      <!-- content -->
+      <div id="content" class="app-content box-shadow-z3" role="main">
+        <div class="app-header info box-shadow-z4 navbar-md">
+          <div class="navbar navbar-toggleable-sm flex-row align-items-center">
+            <!-- Open side - Naviation on mobile -->
+            <a data-toggle="modal" data-target="#aside" class="hidden-lg-up mr-3">
+              <i class="material-icons">&#xe5d2;</i>
+            </a>
             <!-- / -->
-          </div>
-          <!-- / navbar collapse -->
 
-          <!-- navbar right -->
-          <ul class="nav navbar-nav ml-auto flex-row">
-            <!-- <li class="nav-item dropdown pos-stc-xs">
+            <!-- Page title - Bind to $state's title -->
+            <div class="mb-0 h5 no-wrap" ng-bind="$state.current.data.title" id="pageTitle"></div>
+
+            <!-- navbar collapse -->
+            <div class="collapse navbar-collapse" id="collapse">
+              <!-- link and dropdown -->
+              <ul class="nav navbar-nav mr-auto">
+                <li class="nav-item dropdown">
+                  <div id="main">
+                    <button class="openbtn" onclick="openSidebar()">☰ Menu </button>
+                  </div>
+                  <!-- / aside -->
+                  <div ui-include="'../views/blocks/dropdown.new.html'"></div>
+                </li>
+              </ul>
+
+              <div ui-include="'../views/blocks/navbar.form.html'"></div>
+              <!-- / -->
+            </div>
+            <!-- / navbar collapse -->
+
+            <!-- navbar right -->
+            <ul class="nav navbar-nav ml-auto flex-row">
+              <!-- <li class="nav-item dropdown pos-stc-xs">
               <a class="nav-link mr-2" href data-toggle="dropdown">
                 <i class="material-icons">&#xe7f5;</i>
                 <span class="label label-sm up warn">3</span>
               </a>
               <div ui-include="'../views/blocks/dropdown.notification.html'"></div>
             </li> -->
-            <li class="nav-item dropdown">
-              <a class="nav-link p-0 clear" href="#" data-toggle="dropdown">
-                <span class="avatar w-32">
-                  <img src="../assets/images/a2.jpg" alt="...">
-                  <i class="on b-white bottom"></i>
-                </span>
-              </a>
-              <div ui-include="'../views/blocks/dropdown.user.html'"></div>
-            </li>
-            <li class="nav-item hidden-md-up">
-              <a class="nav-link pl-2" data-toggle="collapse" data-target="#collapse">
-                <i class="material-icons">&#xe5d4;</i>
-              </a>
-            </li>
-          </ul>
-          <!-- / navbar right -->
-        </div>
-      </div>
-      <div class="app-footer">
-        <div class="p-2 text-xs">
-          <div class="pull-right text-muted py-1">
-            &copy; Copyright <strong>Siamvayupak</strong> <span class="hidden-xs-down">- Built with hopeless</span>
-            <a ui-scroll-to="content"><i class="fa fa-long-arrow-up p-x-sm"></i></a>
-          </div>
-          <div class="nav">
-            <a class="nav-link" href="../">About</a>
-            <a class="nav-link" href="http://themeforest.net/user/flatfull/portfolio?ref=flatfull">Get it</a>
+              <li class="nav-item dropdown">
+                <a class="nav-link p-0 clear" href="#" data-toggle="dropdown">
+                  <span class="avatar w-32">
+                    <img src="../assets/images/a2.jpg" alt="...">
+                    <i class="on b-white bottom"></i>
+                  </span>
+                </a>
+                <div ui-include="'../views/blocks/dropdown.user.html'"></div>
+              </li>
+              <li class="nav-item hidden-md-up">
+                <a class="nav-link pl-2" data-toggle="collapse" data-target="#collapse">
+                  <i class="material-icons">&#xe5d4;</i>
+                </a>
+              </li>
+            </ul>
+            <!-- / navbar right -->
           </div>
         </div>
-      </div>
-      <div class="app-body" id="view">
+        <div class="app-footer">
+          <div class="p-2 text-xs">
+            <div class="pull-right text-muted py-1">
+              &copy; Copyright <strong>Siamvayupak</strong> <span class="hidden-xs-down">- Built with hopeless</span>
+              <a ui-scroll-to="content"><i class="fa fa-long-arrow-up p-x-sm"></i></a>
+            </div>
+            <div class="nav">
+              <a class="nav-link" href="../">About</a>
+              <a class="nav-link" href="http://themeforest.net/user/flatfull/portfolio?ref=flatfull">Get it</a>
+            </div>
+          </div>
+        </div>
+        <div class="app-body" id="view">
 
-        <!-- ############ PAGE START-->
-        <div class="padding" style="background-color:#ffffff">
-          <div class="margin">
-            <h5 class="mb-0 _300"> <strong> Report Table</h5>
-            <small style="color: black;">Report Data real time </small>
-          </div>
-          <div class="row">
-            <div class="col-sm-6 col-md-4 col-lg-12">
+          <!-- ############ PAGE START-->
+          <div class="padding" style="background-color:#ffffff">
+            <div class="margin">
+              <h5 class="mb-0 _300"> <strong> Report Table</h5>
+              <small style="color: black;">Report Data real time </small>
+            </div>
+            <div class="row">
+              <div class="col-sm-6 col-md-4 col-lg-12">
+              </div>
+
             </div>
 
-          </div>
+            <!-- plot design circle 1 -->
+            <!-- hearder -->
 
-          <!-- plot design circle 1 -->
-          <!-- hearder -->
+            <div class="row">
+              <div class="col-md-12 col-xl-12">
+                <div class="box"
+                  style="background: linear-gradient(315deg, #60090D, #1126b1); border-radius: 10px; padding: 20px;">
+                  <div class="box-header ">
+                    <h2> <strong>INDOOR</strong></h2>
 
-          <div class="row">
-            <div class="col-md-12 col-xl-12">
-              <div class="box" style="background-color: rgb(110, 109, 109); border-radius: 10px; padding: 20px;">
-                <div class="box-header ">
-                  <h2> <strong>INDOOR</strong></h2>
-
-                  <h3>Report form sensor </h3>
-                  <small>Calculated every 10 mintues</small>
+                    <h3>Report form sensor </h3>
+                    <small>Calculated every 10 mintues</small>
+                  </div>
+                  <div class="box-tool">
+                    <ul class="nav">
+                      <li class="nav-item inline">
+                        <a class="nav-link">
+                          <i class="material-icons md-18">&#xe863;</i>
+                        </a>
+                      </li>
+                      <li class="nav-item inline dropdown">
+                        <a class="nav-link" data-toggle="dropdown">
+                          <i class="material-icons md-18">&#xe5d4;</i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-scale pull-right">
+                          <a class="dropdown-item" href="logtableindoor.html"> logtable</a>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="container">
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>id </th>
+                          <th>asset_type</th>
+                          <th>asset_uuid</th>
+                          <th>device_controller</th>
+                          <th>measurement_type</th>
+                          <th>device_uuid</th>
+                          <th>device_name</th>
+                          <th>device_model</th>
+                          <th>device_brand</th>
+                          <th>rawdata</th>
+                          <th>device_unit</th>
+                          <th>device_status</th>
+                          <th>datatime </th>
+                        </tr>
+                      </thead>
+                      <!-- Indoor Display -->
+                      <tbody id="data-container-indoor">
+                        <!-- Data will be appended here -->
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
-                <div class="box-tool">
-                  <ul class="nav">
-                    <li class="nav-item inline">
-                      <a class="nav-link">
-                        <i class="material-icons md-18">&#xe863;</i>
-                      </a>
-                    </li>
-                    <li class="nav-item inline dropdown">
-                      <a class="nav-link" data-toggle="dropdown">
-                        <i class="material-icons md-18">&#xe5d4;</i>
-                      </a>
-                      <div class="dropdown-menu dropdown-menu-scale pull-right">
-                        <a class="dropdown-item" href="logtableindoor.html"> logtable</a>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-                <div class="container">
-                  <table>
-                    <thead>
-                      <tr>
-                        <th>asset_ty</th>
-                        <th>asset_uuid</th>
-                        <th>datatime</th>
-                        <th>device_brand</th>
-                        <th>device_controller</th>
-                        <th>device_model</th>
-                        <th>device_name</th>
-                        <th>device_status</th>
-                        <th>device_unit</th>
-                        <th>device_uuid</th>
-                        <th>id</th>
-                        <th>imeasurement_type</th>
-                        <th>rawdata</th>
-                      </tr>
-                    </thead>
-                    <!-- Indoor Display -->
-                    <tbody id="data-container-indoor">
-                      <!-- Data will be appended here -->
-                    </tbody>
-                  </table>
+              </div>
+              <div class="col-md-12 col-xl-12">
+                <div class="box"
+                  style="background: linear-gradient(180deg, #60090D, #1126b1); border-radius: 10px; padding: 20px;">
+                  <div class="box-header ">
+                    <h2> <strong>OUTDOOR</strong></h2>
+                    <h3>Report form sensor </h3>
+                    <small>Calculated every 10 mintues</small>
+                  </div>
+                  <div class="box-tool">
+                    <ul class="nav">
+                      <li class="nav-item inline">
+                        <a class="nav-link">
+                          <i class="material-icons md-18">&#xe863;</i>
+                        </a>
+                      </li>
+                      <li class="nav-item inline dropdown">
+                        <a class="nav-link" data-toggle="dropdown">
+                          <i class="material-icons md-18">&#xe5d4;</i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-scale pull-right">
+                          <a class="dropdown-item" href="logtableoutdoor.html">logdata</a>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="container">
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>id</th>
+                          <th>asset_type </th>
+                          <th>asset_uuid</th>
+                          <th>device_controller</th>
+                          <th>measurement_type</th>
+                          <th>device_uuid</th>
+                          <th>device_name</th>
+                          <th>device_model</th>
+                          <th>device_brand</th>
+                          <th>rawdata</th>
+                          <th>device_unit</th>
+                          <th>device_status</th>
+                          <th>datatime </th>
+                        </tr>
+                      </thead>
+                      <!-- outdoor display -->
+                      <tbody id="data-container-outdoor">
+                        <!-- Data will be appended here -->
+                      </tbody>
+
+                    </table>
+                  </div>
                 </div>
               </div>
             </div>
-            <div class="col-md-12 col-xl-12">
-              <div class="box" style="background-color: rgb(110, 109, 109); border-radius: 10px; padding: 20px;">
-                <div class="box-header ">
-                  <h2> <strong>OUTDOOR</strong></h2>
-                  <h3>Report form sensor </h3>
-                  <small>Calculated every 10 mintues</small>
-                </div>
-                <div class="box-tool">
-                  <ul class="nav">
-                    <li class="nav-item inline">
-                      <a class="nav-link">
-                        <i class="material-icons md-18">&#xe863;</i>
-                      </a>
-                    </li>
-                    <li class="nav-item inline dropdown">
-                      <a class="nav-link" data-toggle="dropdown">
-                        <i class="material-icons md-18">&#xe5d4;</i>
-                      </a>
-                      <div class="dropdown-menu dropdown-menu-scale pull-right">
-                        <a class="dropdown-item" href="logtableoutdoor.html">logdata</a>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-                <div class="container">
-                  <table>
-                    <thead>
-                      <tr>
-                        <th>asset_ty</th>
-                        <th>asset_uuid</th>
-                        <th>datatime</th>
-                        <th>device_brand</th>
-                        <th>device_controller</th>
-                        <th>device_model</th>
-                        <th>device_name</th>
-                        <th>device_status</th>
-                        <th>device_unit</th>
-                        <th>device_uuid</th>
-                        <th>id</th>
-                        <th>imeasurement_type</th>
-                        <th>rawdata</th>
-                      </tr>
-                    </thead>
-                    <!-- outdoor display -->
-                    <tbody id="data-container-outdoor">
-                      <!-- Data will be appended here -->
-                    </tbody>
+            <!-- plot design circle 2 -->
 
-                  </table>
-                </div>
-              </div>
-            </div>
           </div>
-          <!-- plot design circle 2 -->
+
+          <!-- / -->
+
+          <!-- theme switcher -->
+
+          <!-- / -->
+
+          <!-- ############ LAYOUT END-->
 
         </div>
-
-        <!-- / -->
-
-        <!-- theme switcher -->
-
-        <!-- / -->
-
-        <!-- ############ LAYOUT END-->
-
       </div>
     </div>
-  </div>
-  <script src="../libs/jquery/jquery/dist/jquery.js"></script>
-  <!-- Bootstrap -->
-  <script src="../libs/jquery/tether/dist/js/tether.min.js"></script>
-  <script src="../libs/jquery/bootstrap/dist/js/bootstrap.js"></script>
-  <!-- core -->
-  <script src="../libs/jquery/underscore/underscore-min.js"></script>
-  <script src="../libs/jquery/jQuery-Storage-API/jquery.storageapi.min.js"></script>
-  <script src="../libs/jquery/PACE/pace.min.js"></script>
+    <script src="../libs/jquery/jquery/dist/jquery.js"></script>
+    <!-- Bootstrap -->
+    <script src="../libs/jquery/tether/dist/js/tether.min.js"></script>
+    <script src="../libs/jquery/bootstrap/dist/js/bootstrap.js"></script>
+    <!-- core -->
+    <script src="../libs/jquery/underscore/underscore-min.js"></script>
+    <script src="../libs/jquery/jQuery-Storage-API/jquery.storageapi.min.js"></script>
+    <script src="../libs/jquery/PACE/pace.min.js"></script>
 
-  <script src="scripts/config.lazyload.js"></script>
+    <script src="scripts/config.lazyload.js"></script>
 
-  <script src="scripts/palette.js"></script>
-  <script src="scripts/ui-load.js"></script>
-  <script src="scripts/ui-jp.js"></script>
-  <script src="scripts/ui-include.js"></script>
-  <script src="scripts/ui-device.js"></script>
-  <script src="scripts/ui-form.js"></script>
-  <script src="scripts/ui-nav.js"></script>
-  <script src="scripts/ui-screenfull.js"></script>
-  <script src="scripts/ui-scroll-to.js"></script>
-  <script src="scripts/ui-toggle-class.js"></script>
+    <script src="scripts/palette.js"></script>
+    <script src="scripts/ui-load.js"></script>
+    <script src="scripts/ui-jp.js"></script>
+    <script src="scripts/ui-include.js"></script>
+    <script src="scripts/ui-device.js"></script>
+    <script src="scripts/ui-form.js"></script>
+    <script src="scripts/ui-nav.js"></script>
+    <script src="scripts/ui-screenfull.js"></script>
+    <script src="scripts/ui-scroll-to.js"></script>
+    <script src="scripts/ui-toggle-class.js"></script>
 
-  <script src="scripts/app.js"></script>
-  <script src="scripts/logdata_table.js"></script>
-  
+    <script src="scripts/app.js"></script>
+    <script src="scripts/logdata_table.js"></script>
+    <script src="scripts/slidebarr.js"></script>
 
 
-  <!-- ajax -->
-  <script src="../libs/jquery/jquery-pjax/jquery.pjax.js"></script>
-  <script src="scripts/ajax.js"></script>
-  <!-- endbuild -->
+
+    <!-- ajax -->
+    <script src="../libs/jquery/jquery-pjax/jquery.pjax.js"></script>
+    <script src="scripts/ajax.js"></script>
+    <!-- endbuild -->
 </body>
 
 

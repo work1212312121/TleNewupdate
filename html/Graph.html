@@ -35,6 +35,9 @@
 <!-- endbuild -->
 <link rel="stylesheet" href="../assets/styles/font.css" type="text/css" />
 <script src="scripts/Autorefresh.js" defer></script>
+<link rel="stylesheet" href="../assets/styles/slidebar.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
 <style>
   body {
     font-family: Arial, sans-serif;
@@ -44,12 +47,18 @@
     height: flex;
     margin: 0;
     overflow-y: scroll;
+    background-color: #fff;
 
   }
 
   .padding-box {
-    padding: 5rem 15rem 5rem 5rem;
-    
+    padding: 1rem 15rem 5rem 5rem;
+
+  }
+
+  .box {
+    height: auto;
+    width: auto;
   }
 
   .Assumecontainer {
@@ -120,6 +129,42 @@
   #temp-bar {
     display: none;
   }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    color: #f0f0f0;
+  }
+
+  th,
+  td {
+    padding: 8px;
+    text-align: left;
+    border: 1px solid #000000;
+  }
+
+  th {
+    background-color: #4a4a4a;
+  }
+
+  tr:nth-child(even) {
+    background-color: #3a3a3a;
+  }
+
+  tr:nth-child(odd) {
+    background-color: #2a2a2a;
+  }
+
+  .highlighted {
+    background-color: #3957ff;
+  }
+
+  .container {
+    overflow-y: auto;
+    width: auto;
+    height: auto;
+
+  }
 </style>
 </head>
 
@@ -130,78 +175,17 @@
     <!-- ############ LAYOUT START-->
 
     <!-- aside -->
-    <div id="aside" class="app-aside box-shadow-z3 modal fade lg nav-expand">
-      <div class="left navside white dk" layout="column">
-        <div class="navbar navbar-md info no-radius box-shadow-z4">
-
-          <a class="navbar-brand">
-            <div ui-include="'../assets/images/logo.white.svg'"></div>
-            <img src="../assets/images/logo.png" alt="." class="hide">
-            <span class="hidden-folded inline">SVS IOT</span>
-          </a>
-
-        </div>
-
-
-        <div flex class="hide-scroll">
-          <nav class="scroll">
-
-            <ul class="nav" ui-nav>
-              <li class="nav-header hidden-folded">
-                <small class="text-muted">Option</small>
-
-              </li>
-              <li>
-                <a href="Main.html">
-                  <span class="nav-icon">
-                    <i class="material-icons">&#xe3fc;
-                      <span ui-include="'../assets/images/i_0.svg'"></span>
-                    </i>
-                  </span>
-                  <span class="nav-text"> Main</span>
-                </a>
-              </li>
-              <li>
-                <a href="logdata.html">
-                  <span class="nav-icon">
-                    <i class="material-icons">list_alt</i>
-                  </span>
-                  <span class="nav-text">Log Data</span>
-                </a>
-              </li>
-
-
-
-
-              <li>
-                <a href="Map.html">
-                  <span class="nav-icon">
-                    <i class="material-icons">&#xe55b;</i>
-                  </span>
-                  <span class="nav-text">Map</span>
-                </a>
-              </li>
-
-              <li>
-                <a href="Graph.html">
-                  <span class="nav-icon">
-                    <i class="material-icons">&#xe24b;</i>
-                  </span>
-                  <span class="nav-text">Graph</span>
-                </a>
-              </li>
-
-
-
-            </ul>
-          </nav>
-        </div>
-        <div flex-no-shrink>
-          <div ui-include="'../views/blocks/aside.bottom.1.html'"></div>
-        </div>
-      </div>
+    <div id="sidebar" class="sidebar">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeSidebar()">&times;</a>
+      <a href="../html/Main.html"><i class="fas fa-home"></i> Home</a>
+      <a href="../html/Logdata.html"><i class="fas fa-file-alt"></i> LogTable</a>
+      <a href="../html/Map.html"><i class="fas fa-map-marker-alt"></i> Map</a>
+      <a href="../html/Graph.html"><i class="fas fa-chart-line"></i> Charts</a>
     </div>
 
+    <!-- / aside -->
+
+    <!-- content -->
     <div id="content" class="app-content box-shadow-z3" role="main">
       <div class="app-header info box-shadow-z4 navbar-md">
         <div class="navbar navbar-toggleable-sm flex-row align-items-center">
@@ -219,10 +203,10 @@
             <!-- link and dropdown -->
             <ul class="nav navbar-nav mr-auto">
               <li class="nav-item dropdown">
-                <a class="nav-link" href data-toggle="dropdown">
-                  <i class="fa fa-fw fa-plus text-muted"></i>
-                  <span>Dashboard</span>
-                </a>
+                <div id="main">
+                  <button class="openbtn" onclick="openSidebar()">☰ Menu </button>
+                </div>
+                <!-- / aside -->
                 <div ui-include="'../views/blocks/dropdown.new.html'"></div>
               </li>
             </ul>
@@ -235,12 +219,12 @@
           <!-- navbar right -->
           <ul class="nav navbar-nav ml-auto flex-row">
             <!-- <li class="nav-item dropdown pos-stc-xs">
-              <a class="nav-link mr-2" href data-toggle="dropdown">
-                <i class="material-icons">&#xe7f5;</i>
-                <span class="label label-sm up warn">3</span>
-              </a>
-              <div ui-include="'../views/blocks/dropdown.notification.html'"></div>
-            </li> -->
+            <a class="nav-link mr-2" href data-toggle="dropdown">
+              <i class="material-icons">&#xe7f5;</i>
+              <span class="label label-sm up warn">3</span>
+            </a>
+            <div ui-include="'../views/blocks/dropdown.notification.html'"></div>
+          </li> -->
             <li class="nav-item dropdown">
               <a class="nav-link p-0 clear" href="#" data-toggle="dropdown">
                 <span class="avatar w-32">
@@ -274,9 +258,45 @@
 
 
       <!-- ############ PAGE START-->
+      <!-- <div class="box"
+        style="background: linear-gradient(315deg, #9A0C12, #3F0505);margin-top: 6rem; width: auto; height: 220px;border-radius: 10px;">
+        <div class="box-header" style="margin-left: 2rem;">
+          <h3><strong> Statistics Indoor & Outdoor</strong></h3>
+          <h4>Report from sensors</h4>
+          <small>Calculated every 10 minutes</small>
+        </div>
+        <div class="container">
+          <table>
+            <thead>
+              <tr>
+                <th>Asset</th>
+                <th>Max value</th>
+                <th>Min value</th>
+                <th>Average</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>INDOOR</strong></td>
+                <td id="indoorMax"></td>
+                <td id="indoorMin"></td>
+                <td id="indoorAvg"></td>
+              </tr>
+              <tr>
+                <td><strong>OUTDOOR</strong></td>
+                <td id="outdoorMax"></td>
+                <td id="outdoorMin"></td>
+                <td id="outdoorAvg"></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div> -->
+
+
       <div class="row">
-        <div class="col-md-12 col-xl-10">
-          <div class="padding-box" style="background-color:#ffffff ;border-radius: 10px; ">
+        <div class="col-md-8 col-xl-8">
+          <div class="padding-box" style="background-color:#fff ;margin-left: 10px;margin-top: 6rem; border-radius: 10px; ">
             <div class="margin">
               <h5 class="mb-0 _300"> Temperature Chart</h5>
               <small class="text-muted">Report Data real time </small>
@@ -291,34 +311,80 @@
               <div id="temp-bar"></div>
             </div>
           </div>
-          <br>
-
-
-          <!-- <div class="col-md-12 col-xl-10"
-          <div class="padding" style="background-color:#ffffff ;border-radius: 10px; padding: 20px;">
-            <div class="margin">
-              <h5 class="mb-0 _300"> Chart</h5>
-              <small class="text-muted">Report Data real time </small>
-              <div class="assumeblock">
-                <button id="toggle-chart-btn" class="btn">Toggle Chart</button>
-              </div>
-            </div>
-  
-            <div class="chart-box">
-            </div>
-
-          </div>
-
+        </div>
+        <div class="col-md-4 col-xl-4">
+          <div class="box"
+        style="background: linear-gradient(315deg, #9A0C12, #3F0505);margin-top: 12rem; width: auto; height: 220px;border-radius: 10px;padding-top: 1rem;">
+        <div class="box-header" style="margin-left: 2rem;">
+          <h3><strong> Statistics Indoor & Outdoor</strong></h3>
+          <h4>Report from sensors</h4>
+          <small>Calculated every 10 minutes</small>
+        </div>
+        <div class="container">
+          <table>
+            <thead>
+              <tr>
+                <th>Asset</th>
+                <th>Max value</th>
+                <th>Min value</th>
+                <th>Average</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>INDOOR</strong></td>
+                <td id="indoorMax"></td>
+                <td id="indoorMin"></td>
+                <td id="indoorAvg"></td>
+              </tr>
+              <tr>
+                <td><strong>OUTDOOR</strong></td>
+                <td id="outdoorMax"></td>
+                <td id="outdoorMin"></td>
+                <td id="outdoorAvg"></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
         </div>
       </div>
 
-      </div>  -->
+      <script>
+        async function fetchDataAndCalculate(url) {
+          try {
+            const response = await fetch(url);
+            const data = await response.json();
+            const values = data.map(item => parseFloat(item.rawdata));
+            const max = Math.max(...values);
+            const min = Math.min(...values);
+            const avg = values.reduce((sum, value) => sum + value, 0) / values.length;
+            return { max, min, avg };
+          } catch (error) {
+            console.error('Error fetching data:', error);
+            return { error: 'Failed to fetch data' };
+          }
+        }
 
+        document.addEventListener("DOMContentLoaded", async function () {
+          const indoorUrl = 'https://partially-unique-haddock.ngrok-free.app/api/indoor_temperature';
+          const outdoorUrl = 'https://partially-unique-haddock.ngrok-free.app/api/outdoor_temperature';
 
+          const indoorResult = await fetchDataAndCalculate(indoorUrl);
+          const outdoorResult = await fetchDataAndCalculate(outdoorUrl);
 
-
-        </div>
-      </div>
+          if (indoorResult.error || outdoorResult.error) {
+            console.error('Error fetching data. Please check your URLs.');
+          } else {
+            document.getElementById('indoorMax').textContent = indoorResult.max.toFixed(2);
+            document.getElementById('indoorMin').textContent = indoorResult.min.toFixed(2);
+            document.getElementById('indoorAvg').textContent = indoorResult.avg.toFixed(2);
+            document.getElementById('outdoorMax').textContent = outdoorResult.max.toFixed(2);
+            document.getElementById('outdoorMin').textContent = outdoorResult.min.toFixed(2);
+            document.getElementById('outdoorAvg').textContent = outdoorResult.avg.toFixed(2);
+          }
+        });
+      </Script>
       <script src="../libs/jquery/jquery/dist/jquery.js"></script>
       <!-- Bootstrap -->
       <script src="../libs/jquery/tether/dist/js/tether.min.js"></script>
@@ -349,108 +415,7 @@
       <script src="scripts/Chart.js"></script>
       <script type="module" src="scripts/Chart.js"></script>
       <script src="../assets/dist/apexcharts.min.js"></script>
-      <script>
-        // Initialize myChart1 and myChart2 globally
-        let myChart1, myChart2;
-
-        // Chart.js setup
-        document.addEventListener('DOMContentLoaded', function () {
-          const ctx1 = document.getElementById('myChart1').getContext('2d');
-          const ctx2 = document.getElementById('myChart2').getContext('2d');
-
-          // Chart.js data and options
-          const data = {
-            labels: [],
-            datasets: [{
-              label: 'Temperature',
-              data: [],
-              backgroundColor: 'rgba(54, 162, 235, 0.2)',
-              borderColor: 'rgba(54, 162, 235, 1)',
-              borderWidth: 2,
-              fill: true,
-              tension: 0.4
-            }]
-          };
-
-          const options = {
-            responsive: true,
-            scales: {
-              y: {
-                beginAtZero: true
-              }
-            },
-            plugins: {
-              legend: {
-                display: true,
-                labels: {
-                  color: '#333'
-                }
-              }
-            }
-          };
-
-          // Create Chart.js instances
-          myChart1 = new Chart(ctx1, {
-            type: 'line',
-            data: data,
-            options: options
-          });
-
-          myChart2 = new Chart(ctx2, {
-            type: 'line',
-            data: data,
-            options: options
-          });
-        });
-
-        // Function to fetch data from the API URLs
-        function fetchData(url, callback) {
-          fetch(url)
-            .then(response => response.json())
-            .then(data => callback(data))
-            .catch(error => console.error('Error fetching data:', error));
-        }
-
-        // Fetch indoor temperature data
-        fetchData('https://partially-unique-haddock.ngrok-free.app/api/indoor_temperature', function (data) {
-          // Assuming data is an array of objects with { datatime, rawdata }
-          const indoorData = {
-            labels: data.map(entry => entry.datatime), // Assuming datatime field in data
-            datasets: [{
-              label: 'Indoor Temperature',
-              data: data.map(entry => entry.rawdata), // Assuming rawdata field in data
-              backgroundColor: 'rgba(255, 99, 132, 0.2)',
-              borderColor: 'rgba(255, 99, 132, 1)',
-              borderWidth: 2,
-              fill: true,
-              tension: 0.4
-            }]
-          };
-          // Update myChart1 with indoor temperature data
-          myChart1.data = indoorData;
-          myChart1.update(); // Redraw chart
-        });
-
-        // Fetch outdoor temperature data
-        fetchData('https://partially-unique-haddock.ngrok-free.app/api/outdoor_temperature', function (data) {
-          // Assuming data is an array of objects with { datatime, rawdata }
-          const outdoorData = {
-            labels: data.map(entry => entry.datatime), // Assuming datatime field in data
-            datasets: [{
-              label: 'Outdoor Temperature',
-              data: data.map(entry => entry.rawdata), // Assuming rawdata field in data
-              backgroundColor: 'rgba(54, 162, 235, 0.2)',
-              borderColor: 'rgba(54, 162, 235, 1)',
-              borderWidth: 2,
-              fill: true,
-              tension: 0.4
-            }]
-          };
-          // Update myChart2 with outdoor temperature data
-          myChart2.data = outdoorData;
-          myChart2.update(); // Redraw chart
-        });
-      </script>
+      <script src="scripts/slidebarr.js"></script>
 
       <!-- ajax -->
       <script src="../libs/jquery/jquery-pjax/jquery.pjax.js"></script>

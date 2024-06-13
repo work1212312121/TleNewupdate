@@ -50,5 +50,5 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Fetch the data immediately and then every 5 seconds
     updateAllMetrics();
-    setInterval(updateAllMetrics, 10000); // 5000 milliseconds = 5 seconds
+    setInterval(updateAllMetrics, 30000); // 5000 milliseconds = 5 seconds
 });

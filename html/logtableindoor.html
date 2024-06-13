@@ -22,13 +22,15 @@
   <link rel="stylesheet" href="../assets/glyphicons/glyphicons.css" type="text/css" />
   <link rel="stylesheet" href="../assets/font-awesome/css/font-awesome.min.css" type="text/css" />
   <link rel="stylesheet" href="../assets/material-design-icons/material-design-icons.css" type="text/css" />
+  <link rel="stylesheet" href="../assets/styles/slidebar.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
   <link rel="stylesheet" href="../assets/bootstrap/dist/css/bootstrap.min.css" type="text/css" />
   <!-- build:css ../assets/styles/app.min.css -->
   <link rel="stylesheet" href="../assets/styles/app.css" type="text/css" />
   <!-- endbuild -->
   <link rel="stylesheet" href="../assets/styles/font.css" type="text/css" />
-  <script src="scripts/Autorefresh.js"defer></script>
+  <script src="scripts/Autorefresh.js" defer></script>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -69,7 +71,14 @@
       overflow-y: auto;
       width: auto;
       height: auto;
-      
+    }
+
+    .box {
+      width: auto;
+      height: auto;
+      justify-content: space-between;
+      margin-left: 2rem;
+
     }
   </style>
 </head>
@@ -83,77 +92,14 @@
     <!-- ############ LAYOUT START-->
 
     <!-- aside -->
-    <div id="aside" class="app-aside box-shadow-z3 modal fade lg nav-expand">
-      <div class="left navside white dk" layout="column">
-        <div class="navbar navbar-md info no-radius box-shadow-z4">
-
-          <a class="navbar-brand">
-            <div ui-include="'../assets/images/logo.white.svg'"></div>
-            <img src="../assets/images/logo.png" alt="." class="hide">
-            <span class="hidden-folded inline">SVS IOT</span>
-          </a>
-
-        </div>
-
-
-        <div flex class="hide-scroll">
-          <nav class="scroll">
-
-            <ul class="nav" ui-nav>
-              <li class="nav-header hidden-folded">
-                <small class="text-muted">Option</small>
-
-              </li>
-              <li>
-                <a href="Main.html">
-                  <span class="nav-icon">
-                    <i class="material-icons">&#xe3fc;
-                      <span ui-include="'../assets/images/i_0.svg'"></span>
-                    </i>
-                  </span>
-                  <span class="nav-text"> Main</span>
-                </a>
-              </li>
-              <li>
-                <a href="logdata.html">
-                  <span class="nav-icon">
-                    <i class="material-icons">list_alt</i>
-                  </span>
-                  <span class="nav-text">Log Data</span>
-                </a>
-              </li>
-
-
-
-
-              <li>
-                <a href="Map.html">
-                  <span class="nav-icon">
-                    <i class="material-icons">&#xe55b;</i>
-                  </span>
-                  <span class="nav-text">Map</span>
-                </a>
-              </li>
-
-              <li>
-                <a href="Graph.html">
-                  <span class="nav-icon">
-                    <i class="material-icons">&#xe24b;</i>
-                  </span>
-                  <span class="nav-text">Graph</span>
-                </a>
-              </li>
-
-
-
-            </ul>
-          </nav>
-        </div>
-        <div flex-no-shrink>
-          <div ui-include="'../views/blocks/aside.bottom.1.html'"></div>
-        </div>
-      </div>
+    <div id="sidebar" class="sidebar">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeSidebar()">&times;</a>
+      <a href="../html/Main.html"><i class="fas fa-home"></i> Home</a>
+      <a href="../html/Logdata.html"><i class="fas fa-file-alt"></i> LogTable</a>
+      <a href="../html/Map.html"><i class="fas fa-map-marker-alt"></i> Map</a>
+      <a href="../html/Graph.html"><i class="fas fa-chart-line"></i> Charts</a>
     </div>
+
     <!-- / aside -->
 
     <!-- content -->
@@ -174,10 +120,10 @@
             <!-- link and dropdown -->
             <ul class="nav navbar-nav mr-auto">
               <li class="nav-item dropdown">
-                <a class="nav-link" href data-toggle="dropdown">
-                  <i class="fa fa-fw fa-plus text-muted"></i>
-                  <span>Dashboard</span>
-                </a>
+                <div id="main">
+                  <button class="openbtn" onclick="openSidebar()">☰ Menu </button>
+                </div>
+                <!-- / aside -->
                 <div ui-include="'../views/blocks/dropdown.new.html'"></div>
               </li>
             </ul>
@@ -190,12 +136,12 @@
           <!-- navbar right -->
           <ul class="nav navbar-nav ml-auto flex-row">
             <!-- <li class="nav-item dropdown pos-stc-xs">
-              <a class="nav-link mr-2" href data-toggle="dropdown">
-                <i class="material-icons">&#xe7f5;</i>
-                <span class="label label-sm up warn">3</span>
-              </a>
-              <div ui-include="'../views/blocks/dropdown.notification.html'"></div>
-            </li> -->
+            <a class="nav-link mr-2" href data-toggle="dropdown">
+              <i class="material-icons">&#xe7f5;</i>
+              <span class="label label-sm up warn">3</span>
+            </a>
+            <div ui-include="'../views/blocks/dropdown.notification.html'"></div>
+          </li> -->
             <li class="nav-item dropdown">
               <a class="nav-link p-0 clear" href="#" data-toggle="dropdown">
                 <span class="avatar w-32">
@@ -245,7 +191,8 @@
 
           <div class="row">
             <div class="col-md-12 col-xl-12">
-              <div class="box" style="background-color: rgb(110, 109, 109); border-radius: 10px; padding: 20px;">
+              <div class="box"
+                style="background: linear-gradient(270deg, #9A0C12, #3F0505); border-radius: 10px; padding: 20px;">
                 <div class="box-header ">
                   <h2> <strong>INDOOR</strong></h2>
 
@@ -273,19 +220,19 @@
                   <table>
                     <thead>
                       <tr>
-                        <th>asset_ty</th>
-                        <th>asset_uuid</th>
-                        <th>datatime</th>
-                        <th>device_brand</th>
-                        <th>device_controller</th>
-                        <th>device_model</th>
-                        <th>device_name</th>
-                        <th>device_status</th>
-                        <th>device_unit</th>
-                        <th>device_uuid</th>
                         <th>id</th>
-                        <th>imeasurement_type</th>
+                        <th>asset_type </th>
+                        <th>asset_uuid</th>
+                        <th>device_controller</th>
+                        <th>measurement_type</th>
+                        <th>device_uuid</th>
+                        <th>device_name</th>
+                        <th>device_model</th>
+                        <th>device_brand</th>
                         <th>rawdata</th>
+                        <th>device_unit</th>
+                        <th>device_status</th>
+                        <th>datatime </th>
                       </tr>
                     </thead>
                     <!-- Indoor Display -->
@@ -296,52 +243,54 @@
                 </div>
               </div>
             </div>
+          </div>
+
+
+          <!-- / -->
+
+          <!-- theme switcher -->
+
+          <!-- / -->
+
+          <!-- ############ LAYOUT END-->
+
         </div>
-
-        <!-- / -->
-
-        <!-- theme switcher -->
-
-        <!-- / -->
-
-        <!-- ############ LAYOUT END-->
-
       </div>
     </div>
-  </div>
-  <script src="../libs/jquery/jquery/dist/jquery.js"></script>
-  <!-- Bootstrap -->
-  <script src="../libs/jquery/tether/dist/js/tether.min.js"></script>
-  <script src="../libs/jquery/bootstrap/dist/js/bootstrap.js"></script>
-  <!-- core -->
-  <script src="../libs/jquery/underscore/underscore-min.js"></script>
-  <script src="../libs/jquery/jQuery-Storage-API/jquery.storageapi.min.js"></script>
-  <script src="../libs/jquery/PACE/pace.min.js"></script>
+    <script src="../libs/jquery/jquery/dist/jquery.js"></script>
+    <!-- Bootstrap -->
+    <script src="../libs/jquery/tether/dist/js/tether.min.js"></script>
+    <script src="../libs/jquery/bootstrap/dist/js/bootstrap.js"></script>
+    <!-- core -->
+    <script src="../libs/jquery/underscore/underscore-min.js"></script>
+    <script src="../libs/jquery/jQuery-Storage-API/jquery.storageapi.min.js"></script>
+    <script src="../libs/jquery/PACE/pace.min.js"></script>
 
-  <script src="scripts/config.lazyload.js"></script>
+    <script src="scripts/config.lazyload.js"></script>
 
-  <script src="scripts/palette.js"></script>
-  <script src="scripts/ui-load.js"></script>
-  <script src="scripts/ui-jp.js"></script>
-  <script src="scripts/ui-include.js"></script>
-  <script src="scripts/ui-device.js"></script>
-  <script src="scripts/ui-form.js"></script>
-  <script src="scripts/ui-nav.js"></script>
-  <script src="scripts/ui-screenfull.js"></script>
-  <script src="scripts/ui-scroll-to.js"></script>
-  <script src="scripts/ui-toggle-class.js"></script>
+    <script src="scripts/palette.js"></script>
+    <script src="scripts/ui-load.js"></script>
+    <script src="scripts/ui-jp.js"></script>
+    <script src="scripts/ui-include.js"></script>
+    <script src="scripts/ui-device.js"></script>
+    <script src="scripts/ui-form.js"></script>
+    <script src="scripts/ui-nav.js"></script>
+    <script src="scripts/ui-screenfull.js"></script>
+    <script src="scripts/ui-scroll-to.js"></script>
+    <script src="scripts/ui-toggle-class.js"></script>
 
-  <script src="scripts/app.js"></script>
-  <script>src = "scripts/datalogindoor.js"</script>
-  <script>src = "scripts/datalogoutdoor.js"</script>
+    <script src="scripts/app.js"></script>
+    <script>src = "scripts/datalogindoor.js"</script>
+    <script>src = "scripts/datalogoutdoor.js"</script>
 
-  <script src="scripts/logdata_table.js"></script>
-  <script src="scripts/Autorefresh.js"></script>
-  
-  <!-- ajax -->
-  <script src="../libs/jquery/jquery-pjax/jquery.pjax.js"></script>
-  <script src="scripts/ajax.js"></script>
-  <!-- endbuild -->
+    <script src="scripts/logdata_table.js"></script>
+    <script src="scripts/Autorefresh.js"></script>
+    <script src="scripts/slidebarr.js"></script>
+
+    <!-- ajax -->
+    <script src="../libs/jquery/jquery-pjax/jquery.pjax.js"></script>
+    <script src="scripts/ajax.js"></script>
+    <!-- endbuild -->
 </body>
 
 

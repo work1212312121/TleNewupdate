@@ -12,29 +12,6 @@ async function initializeCharts() {
   const outdoorData = await fetchData('https://partially-unique-haddock.ngrok-free.app/api/outdoor_temperature');
 
   var temp1 = {
-    chart: {
-      type: "area",
-      height: 350,
-      width: 550,
-      foreColor: "#999",
-      stacked: true,
-      dropShadow: {
-        enabled: true,
-        enabledSeries: [0],
-        top: -2,
-        left: 2,
-        blur: 5,
-        opacity: 0.06,
-      },
-    },
-    colors: ["#00E396", "#0090FF"],
-    stroke: {
-      curve: "smooth",
-      width: 3,
-    },
-    dataLabels: {
-      enabled: false,
-    },
     series: [
       {
         name: "Indoor Temperature",
@@ -45,15 +22,45 @@ async function initializeCharts() {
         data: outdoorData,
       },
     ],
-    markers: {
-      size: 0,
-      strokeColor: "#fff",
-      strokeWidth: 3,
-      strokeOpacity: 1,
-      fillOpacity: 1,
-      hover: {
-        size: 6,
+    chart: {
+      height: 450,
+      width: 750,
+      type: 'line',
+      dropShadow: {
+        enabled: true,
+        color: '#000',
+        top: 18,
+        left: 7,
+        blur: 10,
+        opacity: 0.2
       },
+      zoom: {
+        enabled: false
+      },
+      toolbar: {
+        show: false
+      }
+    },
+    colors: ['#41FEC2', '#FF512C'],
+    dataLabels: {
+      enabled: true,
+    },
+    stroke: {
+      curve: 'smooth'
+    },
+    title: {
+      text: 'Average High & Low Temperature',
+      align: 'left'
+    },
+    grid: {
+      borderColor: '#e7e7e7',
+      row: {
+        colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
+        opacity: 0.5
+      },
+    },
+    markers: {
+      size: 1
     },
     xaxis: {
       type: "datetime",
@@ -63,45 +70,34 @@ async function initializeCharts() {
       axisTicks: {
         show: false,
       },
-    },
-    yaxis: {
-      labels: {
-        offsetX: 14,
-        offsetY: -5,
-      },
       tooltip: {
         enabled: true,
       },
     },
-    grid: {
-      padding: {
-        left: -5,
-        right: 5,
+    yaxis: {
+      title: {
+        text: 'Temperature'
       },
-    },
-    tooltip: {
-      x: {
-        format: "dd MMM yyyy HH:mm:ss",
-      },
+      min: 5,
+      max: 40
     },
     legend: {
-      position: "top",
-      horizontalAlign: "left",
-    },
-    fill: {
-      type: "solid",
-      fillOpacity: 0.7,
-    },
+      position: 'top',
+      horizontalAlign: 'right',
+      floating: true,
+      offsetY: -25,
+      offsetX: -5
+    }
   };
 
 
 
-  
+
   var temp2 = {
     chart: {
       type: "bar",
-      height: 350,
-      width: 550,
+      height: 450,
+      width: 750,
     },
     plotOptions: {
       bar: {

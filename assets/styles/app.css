@@ -13,10 +13,12 @@ body {
   -webkit-font-smoothing: antialiased;
   overflow-y: auto;
 }
+
 /* CSS class to change text color to white */
 .white-text {
   color: rgb(0, 0, 0);
 }
+
 /* Table for logging data*/
 
 
@@ -36,17 +38,22 @@ a {
   cursor: pointer;
   outline: 0;
 }
-  #map-container {
+
+#map-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: flex; /* Set the height of the container to full viewport height */
+  height: flex;
+  /* Set the height of the container to full viewport height */
   width: flex;
 }
+
 #map {
   height: 700px;
-  width: 1200px; /* Adjusted width for better visibility */
+  width: 1200px;
+  /* Adjusted width for better visibility */
 }
+
 .clock {
   font-size: 30px;
   font-weight: bold;
@@ -1994,11 +2001,13 @@ a.list-group-item.hover {
   background-color: #ffffff;
   position: relative;
   margin-bottom: 1.5rem;
+
 }
 
 .box-header {
   position: relative;
   padding: 0.1rem;
+  color: #fff;
 }
 
 .box-header h2,
@@ -4246,7 +4255,8 @@ div.input-group>.select2-container>.selection {
 
 .info {
   color: rgba(255, 255, 255, 0.87);
-  background-color: #961111;
+  background: #9A0C12;
+  background: linear-gradient(315deg, #9A0C12, #3b0707);
 }
 
 .info .lt {

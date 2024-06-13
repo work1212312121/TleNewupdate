@@ -1,0 +1,67 @@
+body {
+    font-family: "Lato", sans-serif;
+}
+
+.sidebar {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background: linear-gradient(270deg, #9A0C12, #2c0303);
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.sidebar a {
+    margin-top: 40px;
+    padding: 4px 4px 4px 16px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #fff;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidebar a:hover {
+    color: #ffffff;
+}
+
+.sidebar .closebtn {
+
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+    margin-top: 80px;
+}
+
+.openbtn {
+
+    font-size: 15px;
+    cursor: pointer;
+    background-color: #111;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 10px;
+}
+
+.openbtn:hover {
+    background-color: hsl(0, 0%, 100%);
+    border: hsla(0, 87%, 33%, 0.993) solid;
+    color: hsl(0, 86%, 39%);
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+#main {
+    transition: margin-left .5s;
+    padding: 10px;
+}
