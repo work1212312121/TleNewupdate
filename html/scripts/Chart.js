@@ -43,7 +43,7 @@ async function initializeCharts() {
     },
     colors: ['#41FEC2', '#FF512C'],
     dataLabels: {
-      enabled: true,
+      enabled: false,
     },
     stroke: {
       curve: 'smooth'
@@ -79,7 +79,7 @@ async function initializeCharts() {
         text: 'Temperature'
       },
       min: 5,
-      max: 40
+      max: 100
     },
     legend: {
       position: 'top',
